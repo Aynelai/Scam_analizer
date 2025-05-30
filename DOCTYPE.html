@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحلیل وب‌سایت amazonboter.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Tahoma', sans-serif; scroll-behavior: smooth; }
+        .active-nav { color: #f59e0b; /* amber-500 */ border-bottom: 2px solid #f59e0b; }
+        .inactive-nav { color: #e5e7eb; /* gray-200 */ }
+        .table-hover tr:hover { background-color: #f0f9ff; /* sky-50 */ }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 300px; max-height: 350px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .container {
+            max-width: 90%; /* افزایش عرض محتوا */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 80%; /* در صفحه‌های بزرگتر کمی کمتر */
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-sky-700 p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-center items-center space-x-4 space-x-reverse">
+            <a href="#warning" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">هشدار!</a>
+            <a href="#about-site" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">درباره سایت</a>
+            <a href="#scam-pattern" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">الگوی کلاهبرداری</a>
+            <a href="#comparison" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">مقایسه</a>
+            <a href="#recommendations" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">توصیه‌ها</a>
+            <a href="#scam-detector" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">ابزار تشخیص کلاهبرداری ✨</a>
+            <a href="#email-summarizer" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">خلاصه‌ساز ایمیل/پیام مشکوک ✨</a>
+            <a href="#phishing-analyzer" class="nav-link inactive-nav hover:text-amber-500 px-3 py-2 rounded-md text-sm font-medium">تحلیلگر لینک فیشینگ ✨</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <section id="warning" class="pt-16 -mt-16 mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-sky-700 mb-6 text-center">هشدار فوری: <code class="text-red-600">amazonboter.com</code> یک کلاهبرداری است!</h1>
+            <p class="mb-6 text-lg text-center text-slate-700">این اپلیکیشن بر اساس گزارش تحلیلی ارائه شده، به بررسی وب‌سایت <code class="font-mono">amazonboter.com</code> می‌پردازد. شواهد به وضوح نشان می‌دهند که این سایت یک پلتفرم کلاهبرداری "وظیفه‌محور" بوده و هیچ ارتباطی با شرکت آمازون ندارد. هدف این صفحه، آگاهی‌بخشی و کمک به شناسایی تهدیدات آنلاین مشابه است.</p>
+
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-6 rounded-md shadow-lg mb-8">
+                <h2 class="text-2xl font-semibold mb-3">خلاصه یافته‌های کلیدی:</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>وب‌سایت <code class="font-mono">amazonboter.com</code> تنها یک صفحه ورود به سیستم ساده نمایش می‌دهد و فاقد اطلاعات معتبر است.</li>
+                    <li>این پلتفرم نمونه‌ای از "کلاهبرداری وظیفه‌محور" است که با وعده درآمد آسان، کاربران را فریب داده و از آنها اخاذی می‌کند.</li>
+                    <li>نام دامنه به طور عمدی برای جعل هویت برند آمازون انتخاب شده است.</li>
+                    <li>اطلاعات ثبت دامنه (WHOIS) برای این سایت در دسترس نیست، که یک نشانه خطر جدی است.</li>
+                    <li>روش‌های کاری این سایت با فرآیندهای قانونی و رسمی شرکت آمازون کاملاً در تضاد است.</li>
+                </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-sky-700 mb-4 text-center">دسته‌بندی نشانه‌های خطر اصلی:</h3>
+            <div class="chart-container bg-white p-4 rounded-lg shadow">
+                <canvas id="findingsChart"></canvas>
+            </div>
+            <p class="text-sm text-slate-600 mt-2 text-center">نمودار فوق خلاصه‌ای از دسته‌بندی‌های اصلی نشانه‌های خطر شناسایی شده در مورد <code class="font-mono">amazonboter.com</code> را نمایش می‌دهد.</p>
+        </section>
+
+        <section id="about-site" class="pt-16 -mt-16 mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-6 text-center">`amazonboter.com` چیست؟ نگاهی عمیق‌تر</h2>
+            <p class="mb-6 text-lg text-slate-700">این بخش به بررسی مشاهدات اولیه در مورد وب‌سایت <code class="font-mono">amazonboter.com</code>، از جمله نام دامنه فریبنده و محتوای حداقلی آن می‌پردازد. این موارد اولین نشانه‌های یک پلتفرم مشکوک و بالقوه خطرناک هستند.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-sky-600 mb-3">مشاهدات اولیه و ماهیت فریبنده نام دامنه</h3>
+                <p class="mb-3">هنگام مراجعه به <code class="font-mono">http://amazonboter.com</code>، کاربر تنها با یک صفحه ورود به سیستم بسیار ساده مواجه می‌شود که عبارت "AmazonBot" را نمایش می‌دهد. این فقدان کامل جزئیات، اطلاعات تماس یا توضیحات شفاف در مورد خدمات ارائه‌شده، نشانه‌ای قوی از یک وب‌سایت مشکوک است. وب‌سایت‌های قانونی، به‌ویژه آنهایی که ادعای وابستگی به شرکت‌های بزرگی مانند آمازون را دارند، دارای طراحی حرفه‌ای، اطلاعات جامع و راه‌های ارتباطی شفاف هستند.</p>
+                <p>نام دامنه <code class="font-mono">amazonboter.com</code> نیز به گونه‌ای هوشمندانه انتخاب شده تا از شهرت برند آمازون سوءاستفاده کند. ترکیب "Amazon" با "boter" (که می‌تواند تداعی‌گر "bot" یا "ربات" باشد) تلاشی است برای ایجاد توهم مشروعیت یا وابستگی به اکوسیستم آمازون، خصوصاً در زمینه وظایف آنلاین یا خودکار. این یک تاکتیک رایج در کلاهبرداری‌های فیشینگ برای فریب کاربران ناآگاه است.</p>
+            </div>
+        </section>
+
+        <section id="scam-pattern" class="pt-16 -mt-16 mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-6 text-center">الگوی کلاهبرداری: کلاهبرداری وظیفه‌محور چگونه کار می‌کند؟</h2>
+            <p class="mb-6 text-lg text-slate-700">درک مکانیسم "کلاهبرداری‌های وظیفه‌محور" برای شناسایی سایت‌هایی مانند <code class="font-mono">amazonboter.com</code> حیاتی است. این بخش به تشریح این نوع رایج از کلاهبرداری آنلاین و چگونگی تطابق <code class="font-mono">amazonboter.com</code> با این الگو می‌پردازد.</p>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h3 class="text-xl font-semibold text-sky-600 mb-3">درک کلاهبرداری‌های وظیفه‌محور (Task Scams)</h3>
+                <p class="mb-3">کلاهبرداری‌های وظیفه‌محور، قربانیان را با وعده کسب درآمد آسان از طریق انجام کارهای ساده آنلاین (مانند لایک کردن پست‌ها، تماشای ویدیو یا ثبت سفارش‌های جعلی) فریب می‌دهند. ویژگی بارز این کلاهبرادی‌ها، درخواست از کاربران برای پرداخت هزینه جهت "ارتقاء" حساب یا دسترسی به سطوح درآمدی بالاتر و یا برداشت "درآمد" ادعایی است. این امر آنها را به نوعی کلاهبرداری پیش‌پرداخت (Advance Fee Scam) تبدیل می‌کند.</p>
+                <p>این کلاهبرداری‌ها اغلب بر "مغالطه هزینه غرق‌شده" (Sunk Cost Fallacy) تکیه می‌کنند؛ یعنی افراد پس از سرمایه‌گذاری اولیه (زمان یا پول اندک)، تمایل بیشتری به ادامه سرمایه‌گذاری برای جبران ضررهای احتمالی دارند.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h3 class="text-xl font-semibold text-sky-600 mb-3">شواهد ارتباط <code class="font-mono">amazonboter.com</code> با این الگو</h3>
+                <p class="mb-3">اگرچه محتوای مستقیمی فراتر از صفحه ورود از <code class="font-mono">amazonboter.com</code> در دسترس نیست، شواهد و گزارش‌های کاربران (مانند بحث‌های انجمن Reddit) قویاً این دامنه را به شیوه‌های کلاهبرداری وظیفه‌محور که خود را به عنوان فرصت‌های شغلی از راه دور مرتبط با آمازون جا می‌زنند، مرتبط می‌کند. این پیشنهادات شغلی جعلی اغلب از طریق ایمیل‌های غیررسمی یا پیامک‌های ناخواسته ارسال می‌شوند و کاربران را به پلتفرم‌هایی مشابه <code class="font-mono">amazonboter.com</code> هدایت می‌کنند.</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-sky-700 mb-4 text-center mt-8">ویژگی‌های کلیدی کلاهبرداری وظیفه‌محور:</h3>
+            <div class="space-y-3">
+                <div class="accordion-item bg-white rounded-lg shadow">
+                    <button class="accordion-header w-full text-right p-4 font-semibold text-sky-700 hover:bg-sky-50 flex justify-between items-center rounded-t-lg">
+                        <span>وعده درآمد آسان و سریع</span>
+                        <span class="arrow text-xl transform transition-transform duration-300">&#9662;</span>
+                    </button>
+                    <div class="accordion-content p-4 border-t border-slate-200">
+                        <p>کلاهبرداران با وعده‌هایی مانند "درآمد بالا با چند کلیک" یا "کار در منزل با درآمد عالی" قربانیان را جذب می‌کنند. این وعده‌ها معمولاً بیش از حد خوب هستند که واقعی باشند.</p>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white rounded-lg shadow">
+                    <button class="accordion-header w-full text-right p-4 font-semibold text-sky-700 hover:bg-sky-50 flex justify-between items-center">
+                        <span>نیاز به پرداخت اولیه یا "سرمایه‌گذاری"</span>
+                        <span class="arrow text-xl transform transition-transform duration-300">&#9662;</span>
+                    </button>
+                    <div class="accordion-content p-4 border-t border-slate-200">
+                        <p>پس از انجام چند وظیفه ساده و نمایش مقداری "درآمد" اولیه، از کاربر خواسته می‌شود برای ادامه کار، دسترسی به وظایف پرسودتر یا برداشت وجه، مبلغی را پرداخت کند. این پول معمولاً هرگز قابل بازگشت نیست.</p>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white rounded-lg shadow">
+                    <button class="accordion-header w-full text-right p-4 font-semibold text-sky-700 hover:bg-sky-50 flex justify-between items-center">
+                        <span>سوءاستفاده از نام شرکت‌های معتبر</span>
+                         <span class="arrow text-xl transform transition-transform duration-300">&#9662;</span>
+                    </button>
+                    <div class="accordion-content p-4 border-t border-slate-200">
+                        <p>کلاهبرداران اغلب از نام شرکت‌های بزرگ و شناخته‌شده مانند آمازون، گوگل، یا سایر پلتفرم‌های تجارت الکترونیک برای جلب اعتماد قربانیان استفاده می‌کنند، در حالی که هیچ ارتباطی با این شرکت‌ها ندارند.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item bg-white rounded-lg shadow">
+                    <button class="accordion-header w-full text-right p-4 font-semibold text-sky-700 hover:bg-sky-50 flex justify-between items-center rounded-b-lg">
+                        <span>ارتباطات غیررسمی و ناخواسته</span>
+                         <span class="arrow text-xl transform transition-transform duration-300">&#9662;</span>
+                    </button>
+                    <div class="accordion-content p-4 border-t border-slate-200">
+                        <p>اولین تماس معمولاً از طریق کانال‌های غیررسمی مانند پیامک، واتس‌اپ، تلگرام یا ایمیل‌های شخصی (مانند Gmail) صورت می‌گیرد، نه از طریق پورتال‌های شغلی رسمی یا ایمیل‌های شرکتی.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="pt-16 -mt-16 mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-6 text-center">مقایسه: <code class="font-mono">amazonboter.com</code> در برابر آمازون قانونی</h2>
+            <p class="mb-6 text-lg text-slate-700">تفاوت‌های بین <code class="font-mono">amazonboter.com</code> (و کلاهبرداری‌های مشابه) با عملیات قانونی شرکت آمازون بسیار فاحش است. جدول زیر برخی از این اختلافات کلیدی را در ثبت دامنه، کانال‌های ارتباطی و شیوه‌های عملیاتی نشان می‌دهد.</p>
+            <div class="overflow-x-auto bg-white p-1 rounded-lg shadow-md">
+                <table class="min-w-full divide-y divide-slate-200 table-hover">
+                    <thead class="bg-sky-100">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-sky-800 uppercase tracking-wider">ویژگی</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-sky-800 uppercase tracking-wider"><code class="font-mono">amazonboter.com</code> (کلاهبرداری)</th>
+                            <th scope="col" class="
